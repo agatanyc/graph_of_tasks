@@ -16,11 +16,26 @@ class Graph():
         if os.path.exists(filename):
             with open(filename, 'r') as f:
                 content = f.read()
-            content = json.loads(content)
+            dictionary = json.loads(content)
         else return
 
         # For each item, create node.
-        pass
+        for item in dictionary:
+            node = Node()
+            node.id = item
+            # Populate string attributes of node.
+            attrs = ['descr', 'action', 'test']
+            for attr in attrs:
+                if attr in dictionary[item]:
+                    setattr(node, attr, dictionary[item][attr])
+
+            # Populate 'successors' set.
+            node.successors = set(dictionary[item]['successors']
+
+            # Populate 'parents' set.
+            # This must depend on self.populate_all_paths.
+            pass
+
 
         # For each node, populate parents.
 

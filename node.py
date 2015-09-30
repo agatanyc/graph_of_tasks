@@ -1,6 +1,5 @@
 class Node():
-    """
-    Node information in a text should be stored in JSON.
+    """Node information in a text should be stored in JSON.
 
     At a minimum, each node should contain an ID, description, and action.
 

@@ -1,22 +1,28 @@
+import json
 import node
 import os
 
 class Graph():
     """Instantiate nodes and add them to a graph object."""
-    def __init__(self):
+    def __init__(self, filename=None):
         self.graph = {}      # Key: id; value: instance of Node.
-        self.paths = set()   # Each path in this set is a unique tuple of ids.
+        self.paths = set()   # Each path in this set is unique tuple of ids.
         self.orphans = set() # Contains ids.
+        self.populate_graph(filename)
 
     def populate_graph(self, filename=None):
-        """Populate graph from file."""
+        """Populate graph from file (JSON format)."""
         # Check for existence of file and open.
         if os.path.exists(filename):
             with open(filename, 'r') as f:
                 content = f.read()
+            content = json.loads(content)
+        else return
 
         # For each item, create node.
         pass
+
+        # For each node, populate parents.
 
     def populate_all_paths(self):
         """Conduct breadth-first search on graph."""
